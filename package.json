@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/Isaque-Claudino-dos-Santos/game-engine-2D#readme",
   "devDependencies": {
+    "eslint": "^10.0.2",
+    "jiti": "^2.6.1",
     "webpack": "^5.105.4"
   }
 }
