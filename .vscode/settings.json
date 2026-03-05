@@ -1,0 +1,8 @@
+{
+  // # PRETTIER
+  "prettier.enable": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.endOfLine": "cr",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
