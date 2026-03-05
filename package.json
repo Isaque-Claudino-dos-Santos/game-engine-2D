@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Isaque-Claudino-dos-Santos/game-engine-2D/issues"
   },
-  "homepage": "https://github.com/Isaque-Claudino-dos-Santos/game-engine-2D#readme"
+  "homepage": "https://github.com/Isaque-Claudino-dos-Santos/game-engine-2D#readme",
+  "devDependencies": {
+    "webpack": "^5.105.4"
+  }
 }
