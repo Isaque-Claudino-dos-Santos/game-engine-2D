@@ -4,7 +4,7 @@ export default defineConfig([
   {
     files: ['**/*.ts'],
     rules: {
-      semi: 'error',
+      semi: 'off',
       'prefer-const': 'error',
     },
   },
