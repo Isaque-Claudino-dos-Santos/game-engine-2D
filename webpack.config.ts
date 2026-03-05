@@ -10,9 +10,13 @@ import 'webpack-dev-server'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const config = {
+const config: webpack.Configuration = {
   mode: 'development',
-  entry: './app/main.ts',
+  entry: {
+    main: {
+      import: './app/main.ts',
+    },
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, 'app/public'),
@@ -21,8 +25,8 @@ const config = {
     port: 9000,
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    path: path.resolve(__dirname, './dist'),
   },
   module: {
     rules: [
