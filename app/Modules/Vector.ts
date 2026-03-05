@@ -1,8 +1,8 @@
 import VectorInterface from './Interfaces/VectorInterface'
 
 export default class Vector implements VectorInterface {
-  private x: number
-  private y: number
+  x: number
+  y: number
 
   constructor(x: number = 0, y: number = 0) {
     this.x = x
@@ -17,7 +17,21 @@ export default class Vector implements VectorInterface {
     return this.y
   }
 
+  halfX(): number {
+    return this.x / 2
+  }
+
+  halfY(): number {
+    return this.y / 2
+  }
+
   copy(): VectorInterface {
     return new Vector(this.x, this.y)
+  }
+
+  set(x: number, y: number): VectorInterface {
+    this.x = x
+    this.y = y
+    return this
   }
 }

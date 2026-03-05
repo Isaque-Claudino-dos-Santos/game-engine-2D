@@ -1,21 +1,17 @@
 import Canvas from './Modules/Canvas'
+import DrawRect from './Modules/DrawRect'
 
 const canvas = new Canvas()
 const root = document.querySelector<HTMLDivElement>('#root')!
 
 canvas.attachIn(root).setResolution(1920, 1080).setStyles({
-  width: '500px',
-  height: '500px',
+  width: '80%',
+  height: '80%',
   border: '1px solid',
   margin: '1em',
 })
 
-console.log('2D CONTEXT: ', canvas.getContext())
-canvas
-  .getContext()
-  .fillRect(
-    0,
-    0,
-    (canvas.resolution?.getX() ?? 0) * 0.05,
-    (canvas.resolution?.getY() ?? 0) * 0.05,
-  )
+const rect = new DrawRect()
+rect.getSize().set(30, 30)
+rect.getPosition().set(100, 100)
+rect.draw(canvas.getContext())

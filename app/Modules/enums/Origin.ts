@@ -1,0 +1,11 @@
+export enum Origin {
+  CENTER,
+  LEFT_CENTER,
+  RIGTH_CENTER,
+  TOP_LEFT,
+  TOP,
+  TOP_RIGHT,
+  BOTTON_LEFT,
+  BOTTON_RIGHT,
+  BOTTON,
+}
