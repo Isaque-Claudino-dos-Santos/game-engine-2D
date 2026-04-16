@@ -1,10 +1,10 @@
-import CanvasInterface from './Interfaces/CanvasInterface'
-import Vector from './Vector'
+import CanvasInterface from './interfaces/CanvasInterface'
+import Vector2 from './Vector2'
 
 export default class Canvas implements CanvasInterface {
   private element?: HTMLCanvasElement
   private context?: CanvasRenderingContext2D
-  public resolution?: Vector
+  public resolution?: Vector2
 
   getContext(): CanvasRenderingContext2D {
     const element = this.getElement()
@@ -26,7 +26,7 @@ export default class Canvas implements CanvasInterface {
     const element = this.getElement()
     element.width = x
     element.height = y
-    this.resolution = new Vector(x, y)
+    this.resolution = new Vector2(x, y)
     return this
   }
 

@@ -4,5 +4,9 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.endOfLine": "cr",
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+
+  // # EDITOR
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Fira Code'",
+  "editor.fontLigatures": true
 }
