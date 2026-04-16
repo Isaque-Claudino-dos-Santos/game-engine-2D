@@ -3,13 +3,17 @@ export default class Timer {
   lastTime: number = 0
   time: number = 0
 
-  constructor(public target: number = 0) {}
-
-  check(): boolean {
-    if (this.elapsed >= this.target) {
+  check(target: number = 0): boolean {
+    if (this.elapsed >= target) {
       this.lastTime = this.time
       return true
     }
     return false
+  }
+
+  reset() {
+    this.time = 0
+    this.lastTime = 0
+    this.elapsed = 0
   }
 }

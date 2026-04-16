@@ -2,6 +2,7 @@ import Canvas from './Modules/Canvas'
 import DrawRect from './Modules/DrawRect'
 import GameLoop from './Modules/GameLoop'
 import Timer from './Modules/Timer'
+import Vector2 from './Modules/Vector2'
 
 const canvas = new Canvas()
 const root = document.querySelector<HTMLDivElement>('#root')!
@@ -13,19 +14,35 @@ canvas.attachIn(root).setResolution(1920, 1080).setStyles({
   margin: '1em',
 })
 
-const gameLoop = new GameLoop()
-const myTimer = new Timer(1000)
-gameLoop.timers.push(myTimer)
+const game = new GameLoop()
+const rect = new DrawRect()
 
-gameLoop.update = () => {
-  if (myTimer.check()) {
+game.init = () => {
+  game.timers.create()
+
+  rect.getSize().set(30, 30)
+  rect.getPosition().set(0, 0)
+  rect.setRotate(0)
+}
+
+game.update = () => {
+  if (game.timers.check(0, 1000)) {
+    console.log('ok')
+  }
+
+  if (game.keyboard.check('Space', 1)) {
+    console.log('ok 2')
+  }
+
+  if (game.keyboard.check('KeyD')) {
+    const newPos = rect.getPosition().sum(Vector2.RIGHT)
+
+    rect.getPosition().set(newPos.getX(), newPos.getY())
   }
 }
 
-gameLoop.loop(0)
+game.render = () => {
+  rect.draw(canvas.getContext())
+}
 
-const rect = new DrawRect()
-rect.getSize().set(30, 30)
-rect.getPosition().set(0, 0)
-rect.setRotate(0)
-rect.draw(canvas.getContext())
+game.start()

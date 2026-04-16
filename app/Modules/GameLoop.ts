@@ -1,7 +1,11 @@
-import Timer from './Timer'
+import keyboard from './Keyboard'
+import Timers from './Timers'
 
 export default class GameLoop {
-  timers: Timer[] = []
+  timers: Timers = new Timers()
+  keyboard: keyboard = new keyboard()
+
+  init = () => {}
 
   update = () => {}
 
@@ -9,13 +13,19 @@ export default class GameLoop {
 
   loop = (time: number | null) => {
     if (time)
-      this.timers.forEach((timer) => {
-        timer.elapsed = time  - timer.lastTime
+      this.timers.items.forEach((timer) => {
+        timer.elapsed = time - timer.lastTime
         timer.time = time
       })
 
     this.update()
     this.render()
+
     requestAnimationFrame(this.loop)
+  }
+
+  start = () => {
+    this.init()
+    this.loop(0)
   }
 }
