@@ -9,7 +9,8 @@ type keyboardKey = {
   interactions: number
 }
 
-export default class keyboard {
+export default class Keyboard {
+  private static instance: Keyboard | null = null
   keys: Record<string, keyboardKey> = {}
 
   constructor() {
@@ -41,6 +42,14 @@ export default class keyboard {
       this.keys[code].event = KeyEvent.UP
       this.keys[code].interactions = 0
     })
+  }
+
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new Keyboard()
+    }
+    
+    return this.instance
   }
 
   get(code: string) {

@@ -2,9 +2,18 @@ import CanvasInterface from './interfaces/CanvasInterface'
 import Vector2 from './Vector2'
 
 export default class Canvas implements CanvasInterface {
+  private static instance: Canvas | null = null
   private element?: HTMLCanvasElement
   private context?: CanvasRenderingContext2D
   public resolution?: Vector2
+
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new Canvas()
+    }
+
+    return this.instance
+  }
 
   getContext(): CanvasRenderingContext2D {
     const element = this.getElement()
@@ -13,6 +22,8 @@ export default class Canvas implements CanvasInterface {
     if (!context) {
       throw new Error('get 2d context error')
     }
+
+    this.context = context
 
     return context
   }
@@ -35,11 +46,25 @@ export default class Canvas implements CanvasInterface {
     Object.assign(element.style, styles)
     return this
   }
+
   attachIn(parent: HTMLElement): this {
     if (!this.element) this.element = document.createElement('canvas')
 
     parent.appendChild(this.element)
 
     return this
+  }
+
+  clearCanvas() {
+    if (this.element && this.context) {
+      this.context.beginPath()
+      this.context.clearRect(
+        0,
+        0,
+        this.element.clientWidth,
+        this.element.clientHeight,
+      )
+      this.context.closePath()
+    }
   }
 }

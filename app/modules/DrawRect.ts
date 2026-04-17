@@ -1,3 +1,4 @@
+import { canvas } from '.'
 import { Origin } from './enums/Origin'
 import Drawable from './interfaces/Drawable'
 import Originable from './interfaces/Originable'
@@ -9,7 +10,6 @@ import Vector2 from './Vector2'
 export default class DrawRect
   implements Drawable, Positionable, Originable, Sizeable, Rotateable
 {
-
   private pos: Vector2 = new Vector2()
   private origin: Origin | Vector2 = Origin.CENTER
   private size: Vector2 = new Vector2()
@@ -54,7 +54,8 @@ export default class DrawRect
     return this.pos
   }
 
-  draw(context: CanvasRenderingContext2D): void {
+  draw(): void {
+    const context = canvas.getContext()
     const origin = this.getOrigin()
     const translation = this.getOrigin().sum(this.pos)
 

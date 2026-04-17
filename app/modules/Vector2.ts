@@ -7,13 +7,16 @@ export default class Vector2 implements Vector2Interface {
   static BOTTON = new Vector2(0, 1)
 
   constructor(
-    private x: number = 0,
-    private y: number = 0,
+    public x: number = 0,
+    public y: number = 0,
   ) {}
 
-  sum(vector2: Vector2Interface): Vector2Interface {
-    const x = new Vector2(this.x + vector2.getX(), this.y + vector2.getY())
-    return x
+  sum(vector2: Vector2): Vector2 {
+    return new Vector2(this.x + vector2.getX(), this.y + vector2.getY())
+  }
+  
+  sub(vector2: Vector2): Vector2 {
+    return new Vector2(this.x - vector2.getX(), this.y - vector2.getY())
   }
 
   getX(): number {
@@ -44,5 +47,11 @@ export default class Vector2 implements Vector2Interface {
     this.x = x
     this.y = y
     return this
+  }
+
+  distance(vector: Vector2) {
+    const catX = this.x - vector.x
+    const catY = this.y - vector.y
+    return Math.sqrt(catX ** 2 + catY ** 2)
   }
 }
